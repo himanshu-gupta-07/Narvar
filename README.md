@@ -14,9 +14,10 @@
 
 3. Implementation:
     - Data Model: We will be using relational Database model which has 3 columns (Id, LongURL, ShortURL).
-    - Services: We would be defining two functions inside our service one shortening service (UrlShortner(String longUrl)) and redirecting service (getURL(String shortUrl)).
+    - Services: We would be defining two functions inside our service one shortening function (UrlShortner(String longUrl)) and redirecting function (getURL(String shortUrl)).
       - We would be defining some hash function which can convert longURL to shortURL. We will be shortening our URL to length of hashValue. Since we have 365 billion records and our hashValue can consist of character [0-9,a-z,A-Z] total 10+26+26 = 62 characters. 62^n>=365 billion. That gives n=7. So, hash value length is 7.
-      - There are main 3 hash functions which we can use to get our hash values. They are CRC32, MD5 and SHA-I. But to make our service we are using Base 62 conversion. Please find java file (UrlService.java) for service logic. We are using hashmaps to make it service runnable but in large scale we will be using database as mentioned in 'Data model' point.
+      - There are main 3 hash functions which we can use to get our hash values. They are CRC32, MD5 and SHA-I. But to make our service we are using Base 62 conversion. Please find java file (UrlService.java) for service logic. 
+      - For redirecting function, We are using hashmaps in submitted code to make it service runnable but in large scale we will be using database to fetch data as mentioned in 'Data model' point.
 
 4. Design decisions and scale ups:
     - Rate Limiter: To avoid potential security problem we can filter out requests based on IP address.
